@@ -1,0 +1,16 @@
+apiVersion: kind.x-k8s.io/v1alpha4
+kind: Cluster
+nodes:
+- role: control-plane
+- role: worker
+  labels:
+    kind.zone: zone1
+- role: worker
+  labels:
+    kind.zone: zone1
+- role: worker
+  labels:
+    kind.zone: zone2
+- role: worker
+  labels:
+    kind.zone: zone3

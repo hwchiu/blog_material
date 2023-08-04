@@ -1,0 +1,35 @@
+[user]
+	name = HungWei Chiu
+	email = sppsorrg@gmail.com
+[core]
+    editor = vim
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+	log = auto
+[alias]
+	br = branch
+	st = status
+	ch = checkout
+	com = commit
+	co = checkout
+	df = diff
+	la = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	graph = log --pretty=\"format:%C(yellow)%h%C(auto)%d %Creset %s %C(bold blue)%ar %Creset%Cblue(%ai)\" --graph --branches
+[gpg]
+	program = gpg
+[commit]
+	gpgsign = true
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[fetch]
+	prune = true
+[help]
+	autocorrect = 1
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
