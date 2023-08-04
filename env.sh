@@ -81,7 +81,7 @@ function verify_k8s()
 		--for=condition=ready pod \
 		--selector=app.kubernetes.io/component=controller \
 		--timeout=90s
-
+    sleep 20
 	kubectl apply -f test || error "Failed to deploy application"
 	kubectl wait deployment/hwchiu-deployment --for=condition=available --timeout=5m
 

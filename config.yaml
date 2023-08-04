@@ -2,6 +2,15 @@ apiVersion: kind.x-k8s.io/v1alpha4
 kind: Cluster
 nodes:
 - role: control-plane
+  labels:
+    ingress-ready: true
+  extraPortMappings:
+  - containerPort: 30080
+    hostPort: 8080
+    protocol: TCP
+  - containerPort: 80
+    hostPort: 80
+    protocol: TCP
 - role: worker
   labels:
     kind.zone: zone1
