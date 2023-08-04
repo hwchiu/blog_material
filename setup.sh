@@ -1,8 +1,8 @@
 #!/bin/bash
 set -x
-git clone https://github.com/hwchiu/2023-course.git
+git clone https://github.com/hwchiu/blog_material.git
 
-cd 2023-course
+cd blog_material
 ./env.sh install
 ./env.sh create
 ./env.sh verify
