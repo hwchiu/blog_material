@@ -22,4 +22,4 @@ nodes:
     kind.zone: zone2
 - role: worker
   labels:
-    kind.zone: zone3
+    kind.zone: zone2
