@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-selector
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: nodeSelector
+  template:
+    metadata:
+      labels:
+        app: nodeSelector
+    spec:
+      containers:
+        - name: www-server
+          image: hwchiu/netutils
+      nodeSelector:
+        kind.zone: zone1

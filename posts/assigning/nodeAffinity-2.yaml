@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-affinity-2
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: node-affinity-2
+  template:
+    metadata:
+      labels:
+        app: node-affinity-2
+    spec:
+      containers:
+        - name: www-server
+          image: hwchiu/netutils
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kind.zone
+                    operator: In
+                    values:
+                      - zone1
+              - matchExpressions:
+                  - key: kind.zone
+                    operator: In
+                    values:
+                      - zone2

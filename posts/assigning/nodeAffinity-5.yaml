@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-affinity-5
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: node-affinity-5
+  template:
+    metadata:
+      labels:
+        app: node-affinity-5
+    spec:
+      containers:
+        - name: www-server
+          image: hwchiu/netutils
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kind.zone
+                    operator: In
+                    values:
+                      - zone1
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 4
+              preference:
+                matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - k8slab-worker2
